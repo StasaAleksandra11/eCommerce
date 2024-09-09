@@ -2,7 +2,7 @@ import React from 'react';
 import { LuSearch } from 'react-icons/lu';
 import { SlBasket } from 'react-icons/sl';
 import { FaRegUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 function NavbarComponent() {
 	return (
 		<nav className='shadow-md'>
@@ -38,10 +38,10 @@ function NavbarComponent() {
 				</div>
 			</div>
             <div className='flex items-center justify-center space-x-10 py-4 text-sm font-bold'>
-                <Link to='/' className='hover:underline'>Home</Link>
-                <Link to='/shop'className='hover:underline'>Shop</Link>
-                <Link to='/contact' className='hover:underline'>Contact</Link>
-                <Link to='/about' className='hover:underline'>About</Link>
+                <NavLink to='/' className='hover:underline'>Home</NavLink>
+                <NavLink to='/shop'className='hover:underline'>Shop</NavLink>
+                <NavLink to='/contact' className='hover:underline'>Contact</NavLink>
+                <NavLink to='/about' className='hover:underline'>About</NavLink>
             </div>
 		</nav>
 	);
