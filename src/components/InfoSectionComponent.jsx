@@ -44,9 +44,9 @@ function InfoSectionComponent() {
    
   return ( 
    <div className='pt-12'>
-    <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 space-x-6'>
+    <div className='container flex-1 mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 '>
     {infoItems.map((sec, index) => (
-        <div key={index} className='flex flex-col items-center p-4 border rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 cursor-pointer'>
+        <div key={index} className='flex-1 mr-3 flex-col items-center mt-3 p-4  border rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 cursor-pointer'>
              {sec.img}
             <h2 className=' mt-4 text-xl font-semibold'>{sec.title}</h2>
             <p className='mt-2 text-gray-600'>{sec.descr}</p>
