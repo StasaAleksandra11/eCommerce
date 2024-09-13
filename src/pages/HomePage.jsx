@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveAllProductsAction } from '../store/productSlice';
 import { mockData } from '../data.js';
 import { useEffect } from 'react';
+import ShopPage from './ShopPage.jsx';
+
 function HomePage() {
 	const dispatch = useDispatch();
 	const { products, isLoading } = useSelector(
@@ -35,7 +37,11 @@ function HomePage() {
 						)}
 					</div>
 				</div>
+				
 			</div>
+			
+			<ShopPage/>
+		
 		</div>
 	);
 }
