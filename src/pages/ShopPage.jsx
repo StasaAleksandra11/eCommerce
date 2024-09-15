@@ -4,11 +4,10 @@ import ProductComponent from '../components/ProductComponent'
 import { saveAllProductsAction } from '../store/productSlice';
 import { mockData } from '../data.js';
 function ShopPage() {
-  const dispatch = useDispatch();
-  const {products, isLoading} = useSelector((state) => state.productStore)
-  useEffect(() => {
-		dispatch(saveAllProductsAction(mockData));
-	}, []);
+	const dispatch = useDispatch();
+	const {products, isLoading} = useSelector((state) => state.productStore)
+  
+  
 
   return (
     <div className='container mx-auto py-12  '>
