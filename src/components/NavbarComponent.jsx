@@ -30,11 +30,14 @@ function NavbarComponent() {
                     </form>
 				</div>
 				<div className='flex items-center space-x-4'>
-					<Link to='/cart'>
+					<div className='flex items-center space-x-1'>
+
+					 <Link to='/cart'>
 						{' '}
 						<SlBasket size={20} />
-					</Link>
-					<span className='bg-red-500 rounded-full text-white w-[20px] h-[20px] flex items-center justify-center'>{totalProduct}</span>
+					 </Link>
+					 <span className='bg-red-500 rounded-full text-white w-[20px] h-[20px] flex items-center justify-center'>{totalProduct}</span>
+					</div>
 					<button className=' hidden md:block'>Login | Register</button>
 					<button className='block md:hidden'>
 						<FaRegUser size={18} />
