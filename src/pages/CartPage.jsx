@@ -12,12 +12,14 @@ import { deleteProductAction, setPriceHandlerAction } from '../store/cartSlice';
 
 import ModalComponent from '../components/ModalComponent';
 import AddressComponent from '../components/AddressComponent';
+import { useNavigate } from 'react-router-dom';
 function CartPage() {
 
  const dispatch = useDispatch()
  const {products, cartTotal, totalPrice, totalProduct} = useSelector((state) => state.cartStore)
  const [address, setAddress] = useState('Z. Trifunovica 17')
  const [isModelOpen, setIsModelOpen] = useState(false)  
+ const navigate = useNavigate()
  function handleRemove(item) {
   dispatch(deleteProductAction(item))
  }
@@ -82,7 +84,7 @@ function CartPage() {
        <span>${parseFloat(totalPrice.toFixed(2))}</span> 
      </div>
 
-     <button className='w-full bg-red-600 text-white py-2 hover:bg-red-800'>Proced to checkout</button>
+     <button className='w-full bg-red-600 text-white py-2 hover:bg-red-800' onClick={() => navigate('/checkout')}>Proced to checkout</button>
    </div>
    </div>
      <ModalComponent isModelOpen={isModelOpen} setIsModelOpen={setIsModelOpen}><AddressComponent setAddress={setAddress} setIsModelOpen={setIsModelOpen}/></ModalComponent>

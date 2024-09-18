@@ -11,6 +11,7 @@ import CartPage from './pages/CartPage.jsx'
 import ShopPage from './pages/ShopPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
+import CheckoutPage from './pages/CheckoutPage.jsx'
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/about',
         element: <AboutPage/>
+      },
+      {
+        path: '/checkout',
+        element: <CheckoutPage/>
       }
     ] 
   
