@@ -13,6 +13,7 @@ import { deleteProductAction, setPriceHandlerAction } from '../store/cartSlice';
 import ModalComponent from '../components/ModalComponent';
 import AddressComponent from '../components/AddressComponent';
 import { useNavigate } from 'react-router-dom';
+
 function CartPage() {
 
  const dispatch = useDispatch()
@@ -88,6 +89,7 @@ function CartPage() {
    </div>
    </div>
      <ModalComponent isModelOpen={isModelOpen} setIsModelOpen={setIsModelOpen}><AddressComponent setAddress={setAddress} setIsModelOpen={setIsModelOpen}/></ModalComponent>
+     
   </div>
    
   )

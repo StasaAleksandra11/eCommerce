@@ -12,7 +12,7 @@ import ShopPage from './pages/ShopPage.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import CheckoutPage from './pages/CheckoutPage.jsx'
-
+import OrderComfirmationPage from './pages/OrderComfirmationPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/checkout',
         element: <CheckoutPage/>
+      },
+      {
+        path: '/order',
+        element: <OrderComfirmationPage/>
       }
     ] 
   

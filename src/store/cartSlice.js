@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit"
     initialState: {
         products: [],
         totalProduct: 0,
-        totalPrice : 0
+        totalPrice : 0,
+        order: {
+        }
         
     },
     reducers: {     
@@ -75,9 +77,12 @@ import { createSlice } from "@reduxjs/toolkit"
 
           state.products = copyCart
          
-    }
-
- }})
+    },
+    newOrderAction : (state, action) => { 
+      console.log(action.payload)
+      state.order = action.payload
+ }
+}})
 
 
 
@@ -87,6 +92,6 @@ import { createSlice } from "@reduxjs/toolkit"
    }, 0)
  }
 
- export const {addProductAction, deleteProductAction, setPriceHandlerAction} = cartSlice.actions
+ export const {addProductAction, deleteProductAction, setPriceHandlerAction, newOrderAction} = cartSlice.actions
  export default cartSlice.reducer
  

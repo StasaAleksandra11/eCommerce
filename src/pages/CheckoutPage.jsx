@@ -1,11 +1,36 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { newOrderAction } from '../store/cartSlice';
+import OrderComfirmationPage from './OrderComfirmationPage';
+
+
 
 function CheckoutPage() {
+	const dispatch = useDispatch()
+	const navigate = useNavigate();
 	const [billingToggle, setBillingToggle] = useState(true);
     const [shippingInformation, setShippingInformation] = useState(true)
     const [paymentToggle, setPaymentToggle] = useState(true)
     const [paymentMethod, setPaymentMethod] = useState('cod')
+	const {products, cartTotal, totalPrice, count } = useSelector((state) => state.cartStore) 
+	const [shippingInfo, setShippingInfo] = useState([{address: '', city: '', zip: ''}])
+
+	
+    const newOrder = [{
+	 orderNumber : '123456', 
+	 products : products,
+	 totalPrice : totalPrice,
+	 count : count,
+	 shippingInformation: shippingInfo,
+	}]
+	
+	
+	
+
+
+	
 	return (
 		<div className='container mx-auto py-8 min-h-96 px-4 md:px-16 lg:px-24 '>
 			<h3 className='text-2xl font-semibold mb-4'>CHECKOUT</h3>
@@ -72,7 +97,10 @@ function CheckoutPage() {
 									type='text'
 									name='address'
 									placeholder='Enter Address'
-									className='w-full px-3 border'/>
+									className='w-full px-3 border'
+									onChange={(e) => setShippingInfo({...shippingInfo, address: e.target.value})}
+									/>
+									
 							    </div>
 						  
 					  	       
@@ -82,7 +110,9 @@ function CheckoutPage() {
 									type='text'
 									name='city'
 									placeholder='Enter City'
-									className='w-full px-3 border'/>
+									className='w-full px-3 border'
+									onChange={(e) => setShippingInfo({...shippingInfo, city: e.target.value})}/>
+									
                                 </div>
 							   
 						        <div>
@@ -92,7 +122,9 @@ function CheckoutPage() {
 									type='text'
 									name='zip code'
 									placeholder='Enter Zip Code'
-									className='w-full px-3 border'/>
+									className='w-full px-3 border'
+									onChange={(e) => setShippingInfo({...shippingInfo, zip: e.target.value})}/>
+								
 							    </div>
 						  </div>
 
@@ -160,8 +192,41 @@ function CheckoutPage() {
                         
 				</div>
 				</div>
-				<div className='md:w-1/3 p-6 rounded-lg shadow-md border'></div>
+				<div className='md:w-1/3 p-6 rounded-lg shadow-md border'>
+			     <h3 className='text-lg font-semibold mb-4'>Order Summary</h3>
+				 <div className='space-y-4'>
+					{products.map((item)=>
+						<div key={item.id} className='flex justify-between'> 
+						
+						<div className='flex items-center'>
+							<img src={item.image} 
+							alt={item.name}
+							className='w-16 h-16 object-contain rounded'/>
+							<div className='ml-4'>
+						    	<h4 className='text-md font-semibold'>{item.name}</h4>
+						     	<p className='text-gray-600'>${parseFloat(item.cartTotal.toFixed(2))} x {item.count}</p>
+							</div>
+
+						</div>
+
+						
+						</div>)}
+				 </div>
+				 <div className='mt-4 border-t pt-4'>
+					<div className='flex justify-between'>
+				      <span>Total Price:</span>
+				     
+					<span className='font-semibold'> ${parseFloat(totalPrice.toFixed(2))}</span>
+					
+					</div>
+				 </div>
+				 <button  className='w-full bg-red-600 text-white py-2 mt-6 hover:bg-red-800'
+				 onClick={()=> navigate('/order')}
+				 >Place Order</button>
+				</div>
 			</div>
+			<OrderComfirmationPage shippingInfo={shippingInfo}/>
+			
 		</div>
 	);
 }
