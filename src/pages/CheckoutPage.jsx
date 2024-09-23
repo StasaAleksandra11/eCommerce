@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { newOrderAction } from '../store/cartSlice';
+import {  useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+
 import OrderComfirmationPage from './OrderComfirmationPage';
 
 
 
 function CheckoutPage() {
-	const dispatch = useDispatch()
-	const navigate = useNavigate();
+	
+	
 	const [billingToggle, setBillingToggle] = useState(true);
     const [shippingInformation, setShippingInformation] = useState(true)
     const [paymentToggle, setPaymentToggle] = useState(true)
@@ -17,14 +17,7 @@ function CheckoutPage() {
 	const {products, cartTotal, totalPrice, count } = useSelector((state) => state.cartStore) 
 	const [shippingInfo, setShippingInfo] = useState([{address: '', city: '', zip: ''}])
 
-	
-    const newOrder = [{
-	 orderNumber : '123456', 
-	 products : products,
-	 totalPrice : totalPrice,
-	 count : count,
-	 shippingInformation: shippingInfo,
-	}]
+
 	
 	
 	
@@ -220,12 +213,11 @@ function CheckoutPage() {
 					
 					</div>
 				 </div>
-				 <button  className='w-full bg-red-600 text-white py-2 mt-6 hover:bg-red-800'
-				 onClick={()=> navigate('/order')}
-				 >Place Order</button>
+				 <NavLink to='/order' className='block w-full text-center bg-red-600 text-white py-2 mt-6 hover:bg-red-800' shippingInfo={shippingInfo}>Place Order</NavLink>
+				
 				</div>
 			</div>
-			<OrderComfirmationPage shippingInfo={shippingInfo}/>
+			
 			
 		</div>
 	);

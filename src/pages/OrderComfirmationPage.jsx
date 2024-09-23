@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 function OrderComfirmationPage({shippingInfo}) {
     const {totalPrice} = useSelector((state) => state.cartStore)
@@ -12,7 +13,7 @@ function OrderComfirmationPage({shippingInfo}) {
             <p>Order number: 14523</p>
             <div className='mt-4'>
                 <h2 className='text-md font-semibold mb-2'>Sipping Information</h2>
-                  {shippingInfo}
+                <h3>{shippingInfo}</h3>
             
                 <h2 className='text-md font-semibold mb-2'>Items Ordered</h2>
                 <h3 className='text-md font-semibold mb-2'>Total Price: ${parseFloat(totalPrice.toFixed(2))} </h3>
@@ -21,8 +22,8 @@ function OrderComfirmationPage({shippingInfo}) {
         </div>
         <div className='flex mt-6  space-x-4  '>
          <button className='bg-green-500 text-white py-2 px-4 hover:bg-green-600'>Track Order</button>
-         <button className='bg-red-500 text-white py-2 px-4 hover:bg-red-800'> Continue Shopping</button>
-
+         <NavLink to='/' className='bg-red-500 text-white py-2 px-4 hover:bg-red-800'>Continue Shopping</NavLink>
+        
         </div>
     </div>
   )

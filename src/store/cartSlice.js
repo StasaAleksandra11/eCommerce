@@ -4,9 +4,8 @@ import { createSlice } from "@reduxjs/toolkit"
     initialState: {
         products: [],
         totalProduct: 0,
-        totalPrice : 0,
-        order: {
-        }
+        totalPrice : 0
+       
         
     },
     reducers: {     
@@ -77,11 +76,8 @@ import { createSlice } from "@reduxjs/toolkit"
 
           state.products = copyCart
          
-    },
-    newOrderAction : (state, action) => { 
-      console.log(action.payload)
-      state.order = action.payload
- }
+    }
+   
 }})
 
 
